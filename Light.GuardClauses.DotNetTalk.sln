@@ -5,6 +5,11 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Light.GuardClauses.Examples", "Light.GuardClauses.Examples\Light.GuardClauses.Examples.csproj", "{D21605FF-0A67-4D9C-AE7B-564FC6F8FB05}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{80D7B22D-8267-468F-9450-3AAE69013E05}"
+	ProjectSection(SolutionItems) = preProject
+		CodeSnippets.snippet = CodeSnippets.snippet
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

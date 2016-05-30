@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FluentAssertions;
+using Light.GuardClauses.Exceptions;
 using Xunit;
 
 namespace Light.GuardClauses.Examples
@@ -12,11 +9,7 @@ namespace Light.GuardClauses.Examples
     {
         public Account(string name)
         {
-            name.MustNotBeNull(nameof(name));
-
-            // MustNotBeNull replaces the probably most-common precondition check
-            //if (name == null)
-            //    throw new ArgumentNullException(nameof(name));
+            name.MustNotBeNullOrWhiteSpace();
 
             Name = name;
         }
@@ -33,6 +26,24 @@ namespace Light.GuardClauses.Examples
 
             act.ShouldThrow<ArgumentNullException>()
                .And.ParamName.Should().Be("name");
+        }
+
+        [Fact]
+        public void ConstructorThrowsOnEmptyString()
+        {
+            Action act = () => new Account(string.Empty);
+
+            act.ShouldThrow<EmptyStringException>();
+        }
+
+        [Theory]
+        [InlineData(" ")]
+        [InlineData("\t")]
+        public void ConstructorThrowsOnWhitespaceString(string invalidString)
+        {
+            Action act = () => new Account(invalidString);
+
+            act.ShouldThrow<StringIsOnlyWhiteSpaceException>();
         }
     }
 }
