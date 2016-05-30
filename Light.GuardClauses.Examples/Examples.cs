@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Web.Mvc;
 using FluentAssertions;
 using Light.GuardClauses.Exceptions;
 using Xunit;
+// ReSharper disable NotAccessedField.Local
 
 namespace Light.GuardClauses.Examples
 {
@@ -60,6 +62,31 @@ namespace Light.GuardClauses.Examples
                        () => new InvalidOperationException("You cannot complete the order because some customer information is missing."));
 
             //...
+        }
+    }
+
+    public abstract class Entity
+    {
+        protected Entity(Guid id)
+        {
+            id.MustNotBeEmpty(message: "An entity cannot be initialized with an empty GUID.");
+
+            Id = id;
+        }
+
+        public Guid Id { get; }
+    }
+
+    public class CustomerController : Controller
+    {
+        private readonly ICustomerRepository _customerRepository;
+
+        public CustomerController(ICustomerRepository customerRepository)
+        {
+            customerRepository.MustNotBeNull(exception: 
+                () => new StupidTeamMembersException("Who forgot to register the Customer Repo with the DI container?"));
+
+            _customerRepository = customerRepository;
         }
     }
 

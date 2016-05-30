@@ -16,4 +16,15 @@ namespace Light.GuardClauses.Examples
     {
         public bool IsComplete => false;
     }
+
+    public interface ICustomerRepository { }
+
+    public class StupidTeamMembersException : Exception
+    {
+        public StupidTeamMembersException(string message)
+            : base(message)
+        {
+            
+        }
+    }
 }
