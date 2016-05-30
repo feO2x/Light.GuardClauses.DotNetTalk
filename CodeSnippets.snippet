@@ -2,9 +2,8 @@
 <CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>String Empty or Whitespace Tests</Title>
+      <Title>01 String Empty or Whitespace Tests</Title>
       <Author>Kenny Pflug</Author>
-      <Shortcut>StringEmptyOrWhitespaceTests</Shortcut>
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
       </SnippetTypes>
@@ -34,9 +33,8 @@
   
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>Invalid Enum Value</Title>
+      <Title>02 Invalid Enum Value</Title>
       <Author>Kenny Pflug</Author>
-      <Shortcut>InvalidEnumValue</Shortcut>
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
       </SnippetTypes>
@@ -55,4 +53,35 @@
       </Code>
     </Snippet>
   </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>03 Movie Rating Service</Title>
+      <Author>Kenny Pflug</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp">
+        <![CDATA[public class MovieRatingService
+    {
+        private readonly IMovieRepository _movieRepository;
+
+        public MovieRatingService(IMovieRepository movieRepository)
+        {
+            movieRepository.MustNotBeNull(nameof(movieRepository));
+
+            _movieRepository = movieRepository;
+        }
+
+        public void RateMovie(Guid movieId, int numberOfStars)
+        {
+            $end$
+        }
+    }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+  
 </CodeSnippets>

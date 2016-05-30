@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdditionalTypes.cs" />
     <Compile Include="Examples.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

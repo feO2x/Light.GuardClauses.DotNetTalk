@@ -29,6 +29,27 @@ namespace Light.GuardClauses.Examples
         }
     }
 
+    public class MovieRatingService
+    {
+        private readonly IMovieRepository _movieRepository;
+
+        public MovieRatingService(IMovieRepository movieRepository)
+        {
+            movieRepository.MustNotBeNull(nameof(movieRepository));
+
+            _movieRepository = movieRepository;
+        }
+
+        public void RateMovie(Guid movieId, int numberOfStars)
+        {
+            movieId.MustNotBeEmpty();
+            numberOfStars.MustBeIn(Range<int>.FromInclusive(0).ToInclusive(5));
+
+            var movie = _movieRepository.GetById(movieId);
+            movie.SetMovieRating(numberOfStars);
+        }
+    }
+
     public class SomeTests
     {
         [Fact]
