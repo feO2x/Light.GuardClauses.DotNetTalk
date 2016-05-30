@@ -9,12 +9,24 @@ namespace Light.GuardClauses.Examples
     {
         public Account(string name)
         {
-            name.MustNotBeNullOrWhiteSpace();
+            name.MustNotBeNullOrWhiteSpace(nameof(name));
 
             Name = name;
         }
 
         public string Name { get; }
+    }
+
+    public class ConsoleWriter
+    {
+        private readonly ConsoleColor _color;
+
+        public ConsoleWriter(ConsoleColor color)
+        {
+            color.MustBeValidEnumValue();
+
+            _color = color;
+        }
     }
 
     public class SomeTests
@@ -44,6 +56,16 @@ namespace Light.GuardClauses.Examples
             Action act = () => new Account(invalidString);
 
             act.ShouldThrow<StringIsOnlyWhiteSpaceException>();
+        }
+
+        [Fact]
+        public void InvalidEnumValue()
+        {
+            var invalidValue = (ConsoleColor) 15 + 20;
+
+            Action act = () => new ConsoleWriter(invalidValue);
+
+            act.ShouldThrow<EnumValueNotDefinedException>();
         }
     }
 }

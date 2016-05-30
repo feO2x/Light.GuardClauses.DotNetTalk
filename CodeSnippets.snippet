@@ -31,4 +31,28 @@
       </Code>
     </Snippet>
   </CodeSnippet>
+  
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Invalid Enum Value</Title>
+      <Author>Kenny Pflug</Author>
+      <Shortcut>InvalidEnumValue</Shortcut>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp">
+        <![CDATA[[Fact]
+        public void InvalidEnumValue()
+        {
+            var invalidValue = (ConsoleColor) 15 + 20;
+
+            Action act = () => new ConsoleWriter(invalidValue);
+
+            act.ShouldThrow<EnumValueNotDefinedException>();
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
 </CodeSnippets>
