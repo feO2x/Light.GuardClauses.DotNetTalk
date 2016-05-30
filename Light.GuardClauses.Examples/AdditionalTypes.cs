@@ -11,4 +11,9 @@ namespace Light.GuardClauses.Examples
     {
         IMovie GetById(Guid id);
     }
+
+    public class CustomerInfo
+    {
+        public bool IsComplete => false;
+    }
 }

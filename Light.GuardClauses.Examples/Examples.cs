@@ -50,6 +50,19 @@ namespace Light.GuardClauses.Examples
         }
     }
 
+    public class ShoppingService
+    {
+        public CustomerInfo CustomerInfo { get; set; }
+
+        public void CompleteOrder()
+        {
+            Check.That(CustomerInfo.IsComplete,
+                       () => new InvalidOperationException("You cannot complete the order because some customer information is missing."));
+
+            //...
+        }
+    }
+
     public class SomeTests
     {
         [Fact]
