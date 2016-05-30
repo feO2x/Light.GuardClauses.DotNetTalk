@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		CodeSnippets.snippet = CodeSnippets.snippet
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Light.GuardClauses.PerformanceTests", "Light.GuardClauses.PerformanceTests\Light.GuardClauses.PerformanceTests.csproj", "{D73B9A8F-E56F-47D9-B22B-E8944A388FED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{D21605FF-0A67-4D9C-AE7B-564FC6F8FB05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D21605FF-0A67-4D9C-AE7B-564FC6F8FB05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D21605FF-0A67-4D9C-AE7B-564FC6F8FB05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D73B9A8F-E56F-47D9-B22B-E8944A388FED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D73B9A8F-E56F-47D9-B22B-E8944A388FED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D73B9A8F-E56F-47D9-B22B-E8944A388FED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D73B9A8F-E56F-47D9-B22B-E8944A388FED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
