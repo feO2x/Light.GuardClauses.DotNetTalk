@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using FluentAssertions;
 using Light.GuardClauses.Exceptions;
 using Xunit;
+
 // ReSharper disable NotAccessedField.Local
 
 namespace Light.GuardClauses.Examples
@@ -65,9 +66,9 @@ namespace Light.GuardClauses.Examples
         }
     }
 
-    public abstract class Entity
+    public class Entity
     {
-        protected Entity(Guid id)
+        public Entity(Guid id)
         {
             id.MustNotBeEmpty(message: "An entity cannot be initialized with an empty GUID.");
 
@@ -83,8 +84,7 @@ namespace Light.GuardClauses.Examples
 
         public CustomerController(ICustomerRepository customerRepository)
         {
-            customerRepository.MustNotBeNull(exception: 
-                () => new StupidTeamMembersException("Who forgot to register the Customer Repo with the DI container?"));
+            customerRepository.MustNotBeNull(exception: () => new StupidTeamMembersException("Who forgot to register the Customer Repo with the DI container?"));
 
             _customerRepository = customerRepository;
         }
@@ -127,6 +127,23 @@ namespace Light.GuardClauses.Examples
             Action act = () => new ConsoleWriter(invalidValue);
 
             act.ShouldThrow<EnumValueNotDefinedException>();
+        }
+
+        [Fact]
+        public void EntityEmptyGuid()
+        {
+            Action act = () => new Entity(Guid.Empty);
+
+            act.ShouldThrow<EmptyGuidException>()
+               .And.Message.Should().Be("An entity cannot be initialized with an empty GUID.");
+        }
+
+        [Fact]
+        public void ControllerParameterNull()
+        {
+            Action act = () => new CustomerController(null);
+
+            act.ShouldThrow<StupidTeamMembersException>();
         }
     }
 }

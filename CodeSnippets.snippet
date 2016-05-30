@@ -110,4 +110,47 @@
     </Snippet>
   </CodeSnippet>
   
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>05 Entity Empty Guid Test</Title>
+      <Author>Kenny Pflug</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp">
+        <![CDATA[[Fact]
+        public void EntityEmptyGuid()
+        {
+            Action act = () => new Entity(Guid.Empty);
+
+            act.ShouldThrow<EmptyGuidException>()
+               .And.Message.Should().Be("An entity cannot be initialized with an empty GUID.");
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>06 Controller Argument Null Test</Title>
+      <Author>Kenny Pflug</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp">
+        <![CDATA[[Fact]
+        public void ControllerParameterNull()
+        {
+            Action act = () => new CustomerController(null);
+
+            act.ShouldThrow<StupidTeamMembersException>();
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+  
 </CodeSnippets>
